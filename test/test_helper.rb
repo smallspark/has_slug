@@ -16,6 +16,8 @@ require "#{HAS_SLUG_ROOT}/test/schema.rb"
 Dir["#{HAS_SLUG_ROOT}/test/models/*"].each { |f| require f }
 Dir["#{HAS_SLUG_ROOT}/test/factories/*"].each { |f| require f }
 
+[City, Restaurant, Kitchen].each { |c| c.reset_column_information }
+
 class Test::Unit::TestCase
   def reset_database!
     City.destroy_all
