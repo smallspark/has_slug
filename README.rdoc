@@ -92,6 +92,14 @@ of the record is prepended to the slug.
   url_for(@post)
   # => http://example.com/posts/1-first-post
 
+== Preserving characters
+
+Sometimes you'd like to preserve characters. For instance, if you'd like to have
+slugs that look like filenames, you would want to preserve the ".". This is made
+possible by the preserve option:
+
+  has_slug :filename, :preserve => "."
+
 == Scoped usage
 
 Restaurants belong to a city. They have a unique name, but only in the city they
