@@ -80,6 +80,16 @@ class HasSlugTest < Test::Unit::TestCase
         end
       end
       
+      context 'and characters to preserve' do
+        setup do
+          @restaurant_2_0 = Factory(:restaurant, :name => 'Restaurant 2.0')
+        end
+        
+        should 'preserve the .' do
+          assert_equal 'restaurant-2.0', @restaurant_2_0.slug
+        end
+      end
+      
       context 'and a scope' do
         setup do
           @da_marco = Factory(:restaurant, :name => 'Da Marco',
@@ -95,7 +105,8 @@ class HasSlugTest < Test::Unit::TestCase
         
         should 'not create duplicate slugs' do
           @da_marco_2 = Factory(:restaurant, :name => 'Da Marco',
-                                             :city => @new_york)          
+                                             :city => @new_york)
+         
           assert_not_equal @da_marco_2.slug, @da_marco.slug
           
           @da_marco_2.update_attributes(:city => @san_fransisco)          

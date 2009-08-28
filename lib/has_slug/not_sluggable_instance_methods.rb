@@ -15,7 +15,7 @@ module HasSlug::NotSluggableInstanceMethods
   
   def slug
     id   = self.send(self.class.primary_key)
-    slug = self.sluggable.to_slug
+    slug = self.sluggable.to_slug(:preserve => has_slug_options[:preserve])
     
     "#{id}-#{slug}"
   end

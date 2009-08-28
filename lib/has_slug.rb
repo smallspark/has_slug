@@ -14,10 +14,10 @@ module HasSlug
   module ClassMethods 
 
     # Valid options for the has_slug method
-    VALID_HAS_SLUG_OPTIONS = [:scope, :slug_column].freeze
+    VALID_HAS_SLUG_OPTIONS = [:scope, :slug_column, :preserve].freeze
     
     # Default options for the has_slug method
-    DEFAULT_HAS_SLUG_OPTIONS = { :scope => nil, :slug_column => 'slug' }.freeze
+    DEFAULT_HAS_SLUG_OPTIONS = { :scope => nil, :slug_column => 'slug', :preserve => '' }.freeze
 
     # Set up an ActiveRecord model to use a slug.
     #
