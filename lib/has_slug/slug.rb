@@ -8,7 +8,11 @@ class String
     acceptable  = preserve + ["-", "_"]
     
     # Transliterate
-    slug = Unicode.normalize_KD(slug).gsub(/[^\x00-\x7F]/n,'')
+    if defined?(Unicode) && Unicode.respond_to?(:normalize_KD)
+      slug = Unicode.normalize_KD(slug).gsub(/[^\x00-\x7F]/n,'')
+    elsif defined?(UnicodeUtils) && UnicodeUtils.respond_to?(:compatibility_decomposition)
+      slug = UnicodeUtils.compatibility_decomposition(slug).gsub(/[^\x00-\x7F]/n,'')
+    end
 
     # Convert to lowercase
     slug.downcase!

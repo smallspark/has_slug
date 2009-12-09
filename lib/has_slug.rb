@@ -1,4 +1,11 @@
-require 'unicode'
+require 'rubygems'
+
+begin
+  require 'unicode'
+rescue MissingSourceFile
+  require 'unicode_utils'
+end
+
 require 'has_slug/slug'
 
 # has_slug is a slugging library for Ruby on Rails
