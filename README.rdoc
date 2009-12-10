@@ -21,6 +21,8 @@ Or even better:
 has_slug is inspired by friendly_id (http://github.com/norman/friendly_id/tree/master),
 but instead of adding a new table for the slugs it uses a single column per model.
 
+The use of the unicode gem for ruby 1.8, or unicode_utils gem for ruby 1.9 is recommended.
+
 === Why?
 
 * Text-based id's look better
