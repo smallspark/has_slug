@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'test/unit'
 require 'sqlite3'
-require 'activerecord'
+require 'active_record'
 require 'shoulda'
 require 'factory_girl'
 

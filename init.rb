@@ -1,1 +1,1 @@
-require 'has_slug'
+require File.dirname(__FILE__) + "/rails/init"
