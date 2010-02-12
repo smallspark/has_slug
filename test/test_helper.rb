@@ -8,8 +8,8 @@ require 'factory_girl'
 HAS_SLUG_ROOT = File.dirname(__FILE__) + "/.."
 $:.unshift("#{HAS_SLUG_ROOT}/lib")
 
-ActiveRecord::Base.establish_connection(:adapter => "sqlite3",
-                                        :dbfile  => "#{HAS_SLUG_ROOT}/test/test.db")
+ActiveRecord::Base.establish_connection(:adapter  => "sqlite3",
+                                        :database => "#{HAS_SLUG_ROOT}/test/test.db")
 require 'has_slug'
 require "#{HAS_SLUG_ROOT}/test/schema.rb"
 

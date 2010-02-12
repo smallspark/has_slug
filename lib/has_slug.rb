@@ -1,9 +1,11 @@
 require 'rubygems'
 
-if RUBY_VERSION >= "1.9"
-  require 'unicode_utils'
-else
-  require 'unicode'
+begin
+  unicode_lib = RUBY_VERSION >= "1.9" ? 'unicode_utils' : 'unicode'
+  require unicode_lib
+
+rescue 
+  puts "Could not find gem: #{unicode_lib}. Install with `gem install #{unicode_lib}` in order to allow unicode normalization"
 end
 
 require 'has_slug/slug'
