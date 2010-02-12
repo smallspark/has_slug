@@ -1,9 +1,9 @@
 require 'rubygems'
 
-begin
-  require 'unicode'
-rescue MissingSourceFile
+if RUBY_VERSION >= "1.9"
   require 'unicode_utils'
+else
+  require 'unicode'
 end
 
 require 'has_slug/slug'
