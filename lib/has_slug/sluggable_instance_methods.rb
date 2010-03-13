@@ -45,7 +45,7 @@ module HasSlug::SluggableInstanceMethods
     while existing = self.class.find_one_with_same_slug(self)
       index ||= 2
       
-      self.slug = "#{self.sluggable.to_slug(:preserve => has_slug_options[:preserve])}_#{index}"
+      self.slug = "#{self.sluggable.to_slug(:preserve => has_slug_options[:preserve])}-#{index}"
       
       index += 1
     end
