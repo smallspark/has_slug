@@ -6,15 +6,16 @@ require 'shoulda'
 require 'factory_girl'
 
 HAS_SLUG_ROOT = File.dirname(__FILE__) + "/.."
-$:.unshift("#{HAS_SLUG_ROOT}/lib")
 
 ActiveRecord::Base.establish_connection(:adapter  => "sqlite3",
                                         :database => "#{HAS_SLUG_ROOT}/test/test.db")
-require 'has_slug'
-require "#{HAS_SLUG_ROOT}/test/schema.rb"
 
-Dir["#{HAS_SLUG_ROOT}/test/models/*"].each { |f| require f }
-Dir["#{HAS_SLUG_ROOT}/test/factories/*"].each { |f| require f }
+$:.unshift("#{HAS_SLUG_ROOT}/lib")
+require 'has_slug'
+
+require "#{HAS_SLUG_ROOT}/test/schema"
+require "#{HAS_SLUG_ROOT}/test/factories"
+require "#{HAS_SLUG_ROOT}/test/models"
 
 [City, Restaurant, Kitchen].each { |c| c.reset_column_information }
 
