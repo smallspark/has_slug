@@ -1,5 +1,5 @@
 # encoding: utf-8
-require "#{File.dirname(__FILE__)}/../test_helper"
+require File.join(File.dirname(__FILE__), '..', 'test_helper')
 
 class SlugTest < Test::Unit::TestCase
   context 'A Slug' do
