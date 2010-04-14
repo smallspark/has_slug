@@ -21,10 +21,8 @@ Gem::Specification.new do |s|
      "lib/has_slug/sluggable_class_methods.rb", "lib/has_slug/sluggable_instance_methods.rb",
      "rails/init.rb", "tasks/has_slug_tasks.rake"]
   s.test_files = 
-    ["test/schema.rb", "test/test_helper.rb", "test/factories/city_factory.rb",
-     "test/factories/kitchen_factory.rb", "test/factories/restaurant_factory.rb", "test/models/city.rb",
-     "test/models/kitchen.rb", "test/models/restaurant.rb", "test/unit/has_slug_test.rb",
-     "rails/init.rb", "test/unit/slug_test.rb"]
+    ["test/schema.rb", "test/test_helper.rb", "test/factories.rb", "test/models.rb",
+     "test/unit/has_slug_test.rb", "rails/init.rb", "test/unit/slug_test.rb"]
   
   s.has_rdoc = true
   s.rdoc_options = ["--main", "README.rdoc"]
