@@ -42,27 +42,27 @@ module HasSlug
       options = DEFAULT_HAS_SLUG_OPTIONS.merge(options).merge(:attribute => attribute)
       
       if defined?(has_slug_options)
-        raise Exception, "has_slug_options is already defined, you can only call has_slug once"
-      end
-      
-      write_inheritable_attribute(:has_slug_options, options)
-      class_inheritable_reader(:has_slug_options)
-      
-      if columns.any? { |column| column.name.to_s == options[:slug_column].to_s }
-        require 'has_slug/sluggable_class_methods'
-        require 'has_slug/sluggable_instance_methods'
-        
-        extend SluggableClassMethods
-        include SluggableInstanceMethods
-        
-        before_save :set_slug,
-                    :if => :new_slug_needed?
+        Rails.logger.error "has_slug_options is already defined, you can only call has_slug once. This call has been ignored."
       else
-        require 'has_slug/not_sluggable_class_methods'
-        require 'has_slug/not_sluggable_instance_methods'
-        
-        extend NotSluggableClassMethods
-        include NotSluggableInstanceMethods
+        write_inheritable_attribute(:has_slug_options, options)
+        class_inheritable_reader(:has_slug_options)
+
+        if columns.any? { |column| column.name.to_s == options[:slug_column].to_s }
+          require 'has_slug/sluggable_class_methods'
+          require 'has_slug/sluggable_instance_methods'
+
+          extend SluggableClassMethods
+          include SluggableInstanceMethods
+
+          before_save :set_slug,
+                      :if => :new_slug_needed?
+        else
+          require 'has_slug/not_sluggable_class_methods'
+          require 'has_slug/not_sluggable_instance_methods'
+
+          extend NotSluggableClassMethods
+          include NotSluggableInstanceMethods
+        end        
       end
     end
   end
